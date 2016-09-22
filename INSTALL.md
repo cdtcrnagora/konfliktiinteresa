@@ -8,6 +8,7 @@
     cd konfliktiinteresa
     
     sudo apt-get mysql-server mysql-client apache2 apache2 php5 php5-mysql
+    sudo a2enmod rewrite
     
     mysql -u root -p
     # CREATE DATABASE ki CHARACTER SET = 'utf8';
