@@ -16,12 +16,16 @@
     # FLUSH PRIVILEGES;
     # \q
     
-    mysql ki -u ki -p < DB/konfliktiinteresa_me.sql
+    # change url to your final one with sed
+    sed 's/www\.konfliktiinteresa\.me/localhost:81/g' DB/konfliktiinteresa_me.sql | mysql ki -u ki -pki
     # you need MySql 5.6 if you got error Unknown collation: 'utf8mb4_unicode_520_ci'
+    
+    # reset passwords
+    mysql ki -u ki -pki -e "UPDATE cdt_users SET user_pass=MD5('Password1')"
     
     vim WP/wp-config.php
     # and set the config (database details mainly)
     
     # setup web server
     
-    # TODO how to login?
+    # Go to http://localhost:81/wp-admin and login using admin@cdtmn.org and Password1 credentials
